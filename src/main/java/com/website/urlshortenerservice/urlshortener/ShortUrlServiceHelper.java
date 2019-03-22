@@ -4,7 +4,7 @@ public class ShortUrlServiceHelper {
     /**
      * Base62 characters table sorted to quickly calculate decimal equivalency by compensating.
      */
-    static final char[] BASE62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".toCharArray();
+    private static final char[] BASE62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".toCharArray();
 
     /**
      * Returns the base 62 string of an integer.
