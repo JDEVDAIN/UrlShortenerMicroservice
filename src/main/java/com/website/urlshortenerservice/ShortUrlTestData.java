@@ -15,10 +15,18 @@ public class ShortUrlTestData {
     @Autowired
     ShortUrlService shortUrlService;
 
-    //'Time': 03.03.19 15:30:25, 'Humidity': 34.6, 'temp': 23.9
+
     @PostConstruct
     public void createTestData() {
         System.out.println("create testdata");
+        shortUrlService.createShortUrl(new ShortUrl("31eds","http://www.google.de"));
+        shortUrlService.createShortUrl(new ShortUrl("31eds","http://www.google.de"));
+        shortUrlService.createShortUrl(new ShortUrl("31eds","http://www.google.de"));
+        shortUrlService.createShortUrl(new ShortUrl("31eds","http://www.google.de"));
+        shortUrlService.createShortUrl(new ShortUrl("31eds","http://www.google.de"));
+        shortUrlService.createShortUrl(new ShortUrl("31eds","http://www.google.de"));
+        shortUrlService.createShortUrl(new ShortUrl("31eds","http://www.google.de"));
         shortUrlService.createShortUrl(new ShortUrl(1L,"31eds","http://www.google.de"));
+        shortUrlService.createShortUrl(new ShortUrl(200L,"31eds","http://www.google.de"));
     }
     }

@@ -6,7 +6,8 @@ import javax.persistence.*;
 @Entity
 public class ShortUrl {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "seq",sequenceName = "ShortUrl_SEQ",allocationSize = 1,initialValue = 1000000)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
     private long id;
 
 
@@ -19,6 +20,12 @@ public class ShortUrl {
 
     public ShortUrl(){
 
+    }
+
+    public ShortUrl(String shortUrl, String url) {
+        id = 0;
+        this.shortUrl = shortUrl;
+        this.url = url;
     }
 
     public ShortUrl(long id, String shortUrl, String url) {
