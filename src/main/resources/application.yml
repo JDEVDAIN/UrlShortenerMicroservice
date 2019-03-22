@@ -1,0 +1,22 @@
+server:
+  port: 8090
+
+
+spring:
+  profiles:
+    include: test
+#  thymeleaf:
+#    cache: false
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+
+      ddl-auto: update
+  datasource:
+    name: ShortUrlDb
+    driverClassName: org.h2.Driver
+    #url: jdbc:h2:file:./ShortUrlDb;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1; #run if db doesnt exists
+    url: jdbc:h2:file:./ShortUrlDb;DB_CLOSE_ON_EXIT=FALSE;IFEXISTS=TRUE;DB_CLOSE_DELAY=-1; #run if db exists
