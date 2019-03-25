@@ -2,6 +2,10 @@ package com.website.urlshortenerservice.urlshortener;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/s")
@@ -14,10 +18,19 @@ public class ShortUrlController {
     public ShortUrl addShortUrl(@RequestBody ShortUrl shortUrl) {
         return shortUrlService.createShortUrl(shortUrl.getUrl());
     }
+
     @GetMapping("/{shortUrl}")
-    public String getUrl(@PathVariable String shortUrl){
-        //TODO implement
-        return shortUrlService.getUrl(shortUrl);
+    public void getUrl(@PathVariable String shortUrl, HttpServletResponse resp) throws IOException {
+        //TODO make faster with base62 to id conversion and not search for base62 value
+        String url = shortUrlService.getUrl(shortUrl);
+        if (url != null) {
+            resp.addHeader("Location", url);
+            //TODO CHECK url if valid
+            resp.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+        } else {
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+        }
+
     }
 }
 
