@@ -12,6 +12,10 @@ import java.util.List;
 public interface ShortUrlRepository extends JpaRepository<ShortUrl, Long> {
 
     List<ShortUrl> findAll();
+
     @Query(value = "SELECT currval(:sequenceName)", nativeQuery = true)
     long getSequenceCurrValLong(@Param("sequenceName") String sequenceName);
-    }
+
+
+    ShortUrl findByShortUrl(String shortUrl);
+}

@@ -15,9 +15,9 @@ public class ShortUrlController {
         return shortUrlService.createShortUrl(shortUrl.getUrl());
     }
     @GetMapping("/{shortUrl}")
-    public void getUrl(@PathVariable String shortUrl){
+    public String getUrl(@PathVariable String shortUrl){
         //TODO implement
-
+        return shortUrlService.getUrl(shortUrl);
     }
 }
 

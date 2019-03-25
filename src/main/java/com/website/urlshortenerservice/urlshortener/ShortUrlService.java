@@ -28,5 +28,10 @@ public class ShortUrlService {
         return shortUrl;
 
     }
+
+    public String getUrl(String base62val) {
+        ShortUrl retVal =shortUrlRepository.findByShortUrl(base62val);
+        return retVal.getUrl();
+    }
 }
 
